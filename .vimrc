@@ -36,6 +36,7 @@ call vundle#begin()
     Plugin 'rosenfeld/conque-term'              " Consoles as buffers
     Plugin 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
     Plugin 'flazz/vim-colorschemes'             " Colorschemes
+    Plugin 'ghifarit53/tokyonight-vim'
 
     "-------------------=== Snippets support ===--------------------
     Plugin 'garbas/vim-snipmate'                " Snippets manager
@@ -52,6 +53,9 @@ call vundle#begin()
     Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
     Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
 
+    "-------------------=== Rust ===--------------------------------
+    Plugin 'rust-lang/rust.vim'
+
 call vundle#end()                           " required
 filetype on
 filetype plugin on
@@ -62,10 +66,26 @@ filetype plugin indent on
 "=====================================================
 syntax enable                               " syntax highlight
 
-set t_Co=256                                " set 256 colors
-colorscheme wombat256mod                    " set color scheme
+set termguicolors
+set background=dark
+let g:tokyonight_style = 'storm'
+let g:tokyonight_enable_italic = 1
+let g:tokyonight_transparent = 1
+let g:tokyonight_cursor = 'magenta'
+let g:tokyonight_sidebars = ['nerdtree', 'tagbar']
+colorscheme tokyonight
+highlight CursorLine cterm=NONE ctermbg=NONE guibg=NONE
+highlight CursorLineNr cterm=bold ctermfg=214 gui=bold guifg=#ffaf00
+highlight Search cterm=bold ctermfg=0 ctermbg=214 gui=bold guifg=#000000 guibg=#ffaf00
+highlight IncSearch cterm=bold ctermfg=0 ctermbg=213 gui=bold guifg=#000000 guibg=#ff5fff
+highlight Visual cterm=NONE ctermbg=236 gui=NONE guibg=#303030
+highlight MatchParen cterm=bold ctermbg=NONE ctermfg=213 gui=bold guibg=NONE guifg=#ff5fff
 
-set number                                  " show line numbers
+highlight SyntasticErrorSign ctermfg=197 guifg=#ff005f
+highlight SyntasticWarningSign ctermfg=214 guifg=#ffaf00
+
+set number relativenumber                          " show line numbers
+set nu rnu
 set ruler
 set ttyfast                                 " terminal acceleration
 
@@ -92,6 +112,14 @@ set clipboard=unnamed                       " use system clipboard
 
 set exrc                                    " enable usage of additional .vimrc files from working directory
 set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
+
+" Set background to transparent
+highlight Normal guibg=NONE ctermbg=NONE
+highlight NonText guibg=NONE ctermbg=NONE
+highlight EndOfBuffer guibg=NONE ctermbg=NONE
+
+let g:airline_theme='tokyonight'
+
 
 " Additional mappings for Esc (useful for MacBook with touch bar)
 inoremap jj <Esc>
@@ -134,7 +162,6 @@ let NERDTreeIgnore=['\.pyc$', '\.pyo$', '__pycache__$']     " Ignore files in NE
 let NERDTreeWinSize=40
 autocmd VimEnter * if !argc() | NERDTree | endif  " Load NERDTree only if vim is run without arguments
 nmap " :NERDTreeToggle<CR>
-
 "=====================================================
 "" SnipMate settings
 "=====================================================

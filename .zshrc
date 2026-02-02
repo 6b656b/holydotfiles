@@ -107,6 +107,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias ob="cd /Users/sdobryakov/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/sdobryakov"
+alias f='vim "$(fzf)"'
+alias j='joshuto'
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -128,4 +132,3 @@ unset __conda_setup
 export PATH="/home/sdobryakov/miniconda/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin
-
