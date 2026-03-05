@@ -56,6 +56,13 @@ call vundle#begin()
     "-------------------=== Rust ===--------------------------------
     Plugin 'rust-lang/rust.vim'
 
+
+    "-------------------=== C++ ===----------------------------------"
+    Plugin 'jiangmiao/auto-pairs'
+    Plugin 'octol/vim-cpp-enhanced-highlight'
+
+
+
 call vundle#end()                           " required
 filetype on
 filetype plugin on
